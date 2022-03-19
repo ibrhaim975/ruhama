@@ -1,0 +1,227 @@
+
+<div *ngIf="loading==true" class="loading-div">
+
+    <p-progressSpinner class="loader-div"></p-progressSpinner>
+    </div>
+<p-toast position="bottom-center"></p-toast>
+<nav class="padding-header ">
+    <div class="container">
+
+        <ol class="breadcrumb  ml-md-0">
+            <li class="breadcrumb-item "><a class="primary-color" href="/">الرئيسية</a></li>
+            <li class="breadcrumb-item "><span><a class="primary-color" [routerLink]="['/all']"
+                        routerLinkActive="router-link-active">فرص التبرع</a> </span></li>
+            <li class="breadcrumb-item active">البرامج</li>
+            <li class="breadcrumb-item active" aria-current="page">{{prog.name}}</li>
+        </ol>
+    </div>
+
+</nav>
+<div #r class="container pt-cutome ">
+    <div class="row">
+   
+
+        <div class="col-md-6 col-12   mb-3">
+            <div class="card card-shadow border-rounded">
+                <div class="row pt-3   px-3">
+                    <div style="position: relative;" class="col-12 col-xl-8 pt-4 pt-xl-2">
+                        <span style="font-weight: 600;" class="primary-color  h4" aria-level="2">{{prog?.name}}
+                        </span>
+                        <button (click)="display_share(prog.id,'humanity')" style="border-radius: 25px;" class="btn btn-primary-cutsom2 btn-sharesm">
+                            <i class="fas fa-share-alt share-icon"></i>
+                            <span style="margin-left: 0.5rem;">مشاركة</span>
+
+                        </button>
+                    </div>
+                    <div style="direction: ltr;" class="col-4 sm-share">
+
+                        <button (click)="display_share(prog.id,'humanity')"  style="border-radius: 25px;" class="btn btn-primary-cutsom2 ">
+                            <i class="fas fa-share-alt share-icon"></i>
+                            <span style="margin-left: 0.5rem;">مشاركة</span>
+
+                        </button>
+
+                    </div>
+
+                    <div class="position-relative overflow-hidden center-items-vertically details-image p-3 mb-0">
+                        <div class="ytPlayer2 ">
+                            <yt-player #ytPlayer *ngIf="prog?.viedo !=null" [videoId]="prog.viedo"></yt-player>
+                        </div>
+                    </div>
+                    <p *ngIf="prog?.description" class="p-3 m-0 text-custom_amount">{{prog?.description}}</p>
+                    <div class="align-items-center bg-light-grey d-flex justify-content-between px-3 py-2">
+
+                        <div>
+
+                        </div>
+                    </div>
+                    <!-- <div class="row mt-2">
+                        <div style="text-align: right; padding-right: 6%;" class="col  ">
+                            <small class="primary-color">تم جمع</small>
+                            <label class="text-custom_amount d-block h4 ">{{prog?.collected_amount}}<small
+                                    style="margin-left: 0.3rem;" class=" text-nowrap">$</small></label>
+                        </div>
+                        <div style="text-align: left;  padding-left: 6%;" class="col">
+                            <small class="primary-color">المبلغ المتبقي</small>
+                            <label
+                                class="text-custom_amount d-block h4 font-semibold MaxValSpan">{{prog?.remaining_amount}}<small
+                                    style="margin-left: 0.3rem;" class="text-nowrap">$</small></label>
+                        </div>
+                        <div class="col-12 pb-3 ">
+                            <p-progressBar [value]="porgess"></p-progressBar>
+
+                        </div>
+                    </div> -->
+                    <div class="row my-3 px-1 py-1">
+                        <div style="background: #f6f7f9;" class="col-12 text-center">
+                            <small style="font-weight: 600;" class=" text-secondary">المبلغ المطلوب</small>
+        
+                            <span style="font-weight: 600;" class=" h4 ml-3 primary-color"> {{prog.req_amount}}
+                                دولار
+        
+                            </span>
+                        </div>
+              
+                </div>
+
+
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-12 mb-3">
+
+
+            <div class="card card-shadow border-rounded p-3">
+                <span style="font-weight: 600;" class=" mb-3 primary-color  h4">
+
+                    <label *ngIf="sumbit==false"> مبلغ التبرع </label>
+                    <label *ngIf="sumbit==true && payment==false"> قم باختيار وسيلة الدفع </label>
+                    <label *ngIf=" payment==true"> الدفع</label>
+                    <div *ngIf=" payment==true"> <span style="font-weight: 600;" class="my-3 text-secondary h6 ">ملاحظة
+                            حقل الرمز البريدي اختياري*</span>
+                    </div>
+                </span>
+                <div *ngIf="sumbit==false" class="ProhectDetailsSubBox">
+                    <div
+                        class="price-details d-flex flex-lg-nowrap flex-wrap justify-content-center justify-content-lg-between">
+                        <button (click)="amount=10" style="width: 14%; " type="button"
+                            class="btn radius-effect border  flex-fill pre-amount btn-outline-primary">
+                            <label> 10 </label>
+                            <label style="margin-right: 3% !important; font-weight: 600;"> $
+                            </label>
+                        </button>
+                        <button (click)="amount=50" style="width: 14%;margin-left: 1%;margin-right: 1%;" type="button"
+                            class="btn radius-effect border  ml-3  flex-fill pre-amount btn-outline-primary">
+                            <label> 50 </label>
+                            <label style="margin-right: 3% !important; "> $ </label>
+                        </button>
+                        <button (click)="amount=100" style="width: 14%;" type="button"
+                            class="btn radius-effect border  ml-3  flex-fill btn-outline-primary">
+                            <label> 100 </label>
+                            <label style="margin-right: 3% !important; "> $ </label>
+                        </button>
+                        <div #widthInput class="input-group mt-2 mr-2 mt-lg-0 marginInput">
+                            <p-inputNumber [(ngModel)]="amount" [inputStyle]="{'width':widthInput.offsetWidth+'px'}"
+                                placeholder="ادخل المبلغ" mode="decimal" [maxlength]="10" mode="currency"
+                                currency="USD">
+                            </p-inputNumber>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div *ngIf="sumbit==false" class="d-flex align-items-center flex-wrap mt-3">
+                    <button (click)="sumbit=true" [disabled]="amount==0 || amount==null" id="projectDonateBtn"
+                        class="btn flex-fill btn-primary-cutsom3 mr-2" type="submit">
+                        <label *ngIf="amount==0 || amount==null;else n"> ادخل المبلغ </label>
+
+                        <ng-template #n>
+                            <label>تبرع الآن</label>
+                        </ng-template>
+
+
+                    </button>
+
+                </div>
+                <div *ngIf="sumbit==true">
+                    <app-pay-pal (payment_done)="payment_done($event)"
+                        (payment_typeselected)="payment_typeselected($event)" [progtype]='"humanity"' [prog]='prog'
+                        [amount]='amount'></app-pay-pal>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p-dialog [modal]='true' [(visible)]="displayshare">
+    <div class="row pt-3  pt-xl-0">
+        <div class="col-12 text-center">
+            <h3 style="font-weight: 600;" class="primary-color"> رابط المشاركة
+
+            </h3>
+        </div>
+        <div class="col-12  mt-3">
+            <div class="p-inputgroup">
+                <button style="border-bottom-right-radius: 25px;
+        border-top-right-radius: 25px;
+        " type="button" (click)='copyMessage()' class="btn btn-primary-cutsom font-mb  "> نسخ </button>
+
+                <input type="text" [(ngModel)]="sharelink" pInputText />
+
+            </div>
+        </div>
+
+    </div>
+
+</p-dialog>
+<footer  class="footer2" >
+    <section class="pt-3 text-light" style="    background: linear-gradient(
+        90deg, #2d7798 0%, #28a58a 59%, #28a58a 100%); ">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between screenxl" role="contentinfo">
+                <span style="font-weight: 600;" class="h5 ">جميع الحقوق محفوظة لمنصة رحماء 2022</span>
+    
+            
+    
+    
+                <div class="align-items-center d-flex d-md-flex flex-column flex-md-row-reverse pt-1 ">
+                    <a style="margin-right: 1rem;" class=" h5    text-light" aria-current="page"
+                        href="https://www.facebook.com/%D8%B1%D8%AD%D9%85%D8%A7%D8%A1-ruhama--1611552422412668/"> <i
+                            class="fab fa-facebook "></i></a>
+                    <a style="margin-right: 1rem;" class=" h5    text-light" aria-current="page" href="#"> <i
+                            class="fab fa-instagram "></i></a>
+                    <a style="margin-right: 1rem;" class=" h5   text-light" aria-current="page"
+                        href="https://api.whatsapp.com/send?phone=972567392862"> <i class="fab fa-whatsapp  "></i></a>
+                    <a style="margin-right: 1rem;" href="https://twitter.com/ruhmaalkher?ref_src=twsrc%5Etfw"
+                        aria-current="page" class="twitter-follow-button h5  text-light" data-show-count="false"><i
+                            class="fab fa-twitter  "></i></a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <!-- <label style="font-weight: 800;" class=" h5  primary ">: مواقعنا  </label> -->
+    
+                </div>
+            </div>
+    
+            <div style="text-align: center !important;" class="row  screen-mob">
+                <div class="col-12  mb-2">
+                    <span style="font-weight: 600;" class="h6">جميع الحقوق محفوظة لمنصة رحماء 2022</span>
+    
+                </div>
+                <div class="col-12  ">
+                    <a style="margin-right: 1rem;" class=" h6    text-light" aria-current="page"
+                        href="https://www.facebook.com/%D8%B1%D8%AD%D9%85%D8%A7%D8%A1-ruhama--1611552422412668/"> <i
+                            class="fab fa-facebook "></i></a>
+                    <a style="margin-right: 1rem;" class=" h6    text-light" aria-current="page" href="#"> <i
+                            class="fab fa-instagram "></i></a>
+                    <a style="margin-right: 1rem;" class=" h6   text-light" aria-current="page"
+                        href="https://api.whatsapp.com/send?phone=972567392862"> <i class="fab fa-whatsapp  "></i></a>
+                    <a style="margin-right: 1rem;" href="https://twitter.com/ruhmaalkher?ref_src=twsrc%5Etfw"
+                        aria-current="page" class="twitter-follow-button h6  text-light" data-show-count="false"><i
+                            class="fab fa-twitter  "></i></a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    </footer>

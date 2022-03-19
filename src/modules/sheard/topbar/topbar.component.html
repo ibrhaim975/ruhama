@@ -1,0 +1,74 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+
+  <div class="container-fluid">
+    <div style="    padding-top: 0.3rem;
+    padding-bottom: 0.1rem;" class="my-3  nav-header2 ">
+      <a style="margin-right: 1rem;" class=" h4   primary" aria-current="page"
+        href="https://www.facebook.com/%D8%B1%D8%AD%D9%85%D8%A7%D8%A1-ruhama--1611552422412668/"> <i
+          class="fab fa-facebook "></i></a>
+      <a style="margin-right: 1rem;" class=" h4  primary " aria-current="page" href="#"> <i
+          class="fab fa-instagram "></i></a>
+      <a style="margin-right: 1rem;" class=" h4 primary " aria-current="page"
+        href="https://api.whatsapp.com/send?phone=972567392862"> <i class="fab fa-whatsapp  "></i></a>
+      <a href="https://twitter.com/ruhmaalkher?ref_src=twsrc%5Etfw" aria-current="page"
+        class="twitter-follow-button h4 primary" data-show-count="false"><i class="fab fa-twitter  "></i></a>
+      <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+      <!-- <label style="font-weight: 800;" class=" h4  primary ">: مواقعنا  </label> -->
+
+    </div>
+    <a class="navbar-brand nav-logo bg-light" href="#">
+      <img style="image-rendering: -moz-crisp-edges;
+        image-rendering: -o-crisp-edges;
+        image-rendering: -webkit-optimize-contrast;
+        -ms-interpolation-mode: nearest-neighbor;    width: 150px; 
+    height: 120px;" width="80px"
+        src="https://firebasestorage.googleapis.com/v0/b/ruhma-70b8c.appspot.com/o/logo.png?alt=media&token=e7a1023a-cb42-4ea2-8b98-7caf2cc5113f"
+        alt="">
+    </a>
+    <a class="navbar-brand ">
+      <img style="image-rendering: -moz-crisp-edges;
+  image-rendering: -o-crisp-edges;
+  image-rendering: -webkit-optimize-contrast;
+  -ms-interpolation-mode: nearest-neighbor;    width: 70px; 
+height: 60px;" class="nav-logosMALL"
+        src="https://firebasestorage.googleapis.com/v0/b/ruhma-70b8c.appspot.com/o/logo.png?alt=media&token=e7a1023a-cb42-4ea2-8b98-7caf2cc5113f"
+        alt="">
+
+      <button [routerLink]="['/all']" routerLinkActive="router-link-active" type="button"
+        class="btn btn-success px-2 px-xl-4 py-xl-2 btn-nav btn-mob"> <label style="font-weight: 800;"
+          class="h5 mb-0">تبرع الآن</label></button>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div style="padding-top: 3%;" class="collapse navbar-collapse " id="navbarSupportedContent">
+
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0 nav-padding">
+        <li class="nav-item ">
+          <a class="nav-link h5 text-secondary " aria-current="page" href="#">الرئيسية</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link h5 text-secondary " [routerLink]="['all']" routerLinkActive="router-link-active">فرص
+            التبرع</a>
+        </li>
+        <li class="nav-item ">
+          <a class="nav-link h5 text-secondary " [routerLink]="['/activities']"
+            routerLinkActive="router-link-active">الأنشطة</a>
+        </li>
+        <li class="nav-item">
+          <a [routerLink]="['/about-us']" routerLinkActive="router-link-active" class="nav-link h5 text-secondary"
+            href="#">من نحن</a>
+        </li>
+
+
+      </ul>
+      <form style="padding-left: 15%;" class="d-flex  btn-mobile">
+
+        <button [routerLink]="['/all']" type="button" class="btn btn-success px-4 py-2 btn-nav"> <label
+            style="font-weight: 800;" class="h5 mb-0">تبرع الآن</label></button>
+
+      </form>
+    </div>
+  </div>
+</nav>

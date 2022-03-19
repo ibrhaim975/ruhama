@@ -1,0 +1,98 @@
+<div *ngIf="loading==true" class="loading-div">
+
+    <p-progressSpinner class="loader-div"></p-progressSpinner>
+    </div>
+<div class="row text-center pt-2">
+
+    <div *ngFor="let item of humanity" class="col-xl-6  col-12 mb-3 mb-xl-0 pb-sm-0 pb-3 px-3 mb-xl-5">
+        <div class="card card-shadow pt-2 pb-3 pr-3 pl-3 radius-effect shadow-effect  px-2">
+            <div class="custom-card-header d-flex justify-content-between">
+                <div style=" width: -webkit-fill-available;">
+                    <h4 class="card-title">  {{item.name}} </h4>
+                </div>
+    
+                <button (click)="display_share(item.id,'humanity')" class="btn primary-color rounded-circle bg-light">
+                    <i class="fas fa-share-alt"></i></button>
+            </div>
+            <div class="my-2 project-item-detaUSD">
+                <div class="replaced-link">
+                    <div class="ytPlayer ">
+                        <yt-player #ytPlayer *ngIf="item.viedo !=null" [videoId]="item.viedo">
+                        </yt-player>
+                    </div>
+                </div>
+    
+                <!-- <div class="row mt-2">
+                    <div style="text-align: right; padding-right: 6%;" class="col  ">
+                        <small class="primary-color">تم جمع</small>
+                        <label class="text-custom_amount d-block h4 ">{{item.collected_amount}}<small style="margin-left: 0.3rem;"
+                                class=" text-nowrap">$</small></label>
+                    </div>
+                    <div style="text-align: left;  padding-left: 6%;" class="col">
+                        <small class="primary-color">المبلغ المتبقي</small>
+                        <label class="text-custom_amount d-block h4 font-semibold MaxValSpan">{{item.remaining_amount}}<small style="margin-left: 0.3rem;"
+                                class="text-nowrap">$</small></label>
+                    </div>
+                </div> -->
+
+                <div class="row my-3 px-1 py-1">
+                    <div style="background: #f6f7f9;" class="col-12 text-center">
+                        <small style="font-weight: 600;" class=" text-secondary">المبلغ المطلوب</small>
+
+                        <span style="font-weight: 600;" class=" h4 ml-3 primary-color"> {{item.req_amount}}
+                            دولار
+
+                        </span>
+                    </div>
+          
+            </div>
+    
+    
+            <form name="addToCart" novalidate="novalidate">
+    
+                <div class="d-flex cart-ctr">
+                    <div style="padding-right: 3%;">
+                        <p-inputNumber #amount id="input_Amount3" placeholder="ادخل المبلغ" mode="decimal" [maxlength]="10" mode="currency"
+                            currency="USD"></p-inputNumber>
+    
+                    </div>
+    
+                    <button (click)="navigateToProg(item.id,amount.value)" style="border-radius: 25px;" class="btn btn-primary-cutsom flex-grow-1 mx-2 "
+                        type="button">
+                        تبرع الآن
+                    </button>
+    
+                </div>
+    
+            </form>
+            <hr>
+            <div class="text-center">
+                <button type="button" class="btn btn-block btn-sm p-0 text-muted btn-cutome2" aria-hidden="true">
+                    <span  (click)="navigateToProg(item.id,null!)"   style="font-weight: 600;" class="h5">معرفة التفاصيل </span></button>
+            </div>
+        </div>
+    </div>
+    
+    </div>
+    
+    <p-dialog [modal]='true' [(visible)]="displayshare">
+        <div class="row pt-3  pt-xl-0">
+            <div class="col-12 text-center">
+                <h3 style="font-weight: 600;" class="primary-color"> رابط المشاركة
+    
+                </h3>
+            </div>
+            <div  class="col-12  mt-3">
+                <div class="p-inputgroup">
+                    <button style="border-bottom-right-radius: 25px;
+            border-top-right-radius: 25px;
+            " type="button" (click)='copyMessage()' class="btn btn-primary-cutsom font-mb  "> نسخ </button>
+    
+                    <input  type="text" [(ngModel)]="sharelink" pInputText />
+    
+                </div>
+            </div>
+    
+        </div>
+    
+    </p-dialog>

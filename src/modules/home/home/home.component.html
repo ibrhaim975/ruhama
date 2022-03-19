@@ -1,0 +1,478 @@
+<div *ngIf="loading==true" class="loading-div">
+
+    <p-progressSpinner class="loader-div"></p-progressSpinner>
+</div>
+
+<div id="carouselExampleIndicators" class="carousel slide carousel-fade " data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div *ngFor="let item of main_imges;let i =index" [ngClass]="{'active': i==0}" style="position:relative;"
+            class="carousel-item carousel-text ">
+            <img class="d-block  w-100 img-fluid mobile-viewimg" [src]="item.link" alt="First slide">
+            <div [ngClass]="{'carousel-content2': item.image_header?.length>15}" class="carousel-content">
+                <h1 class="text-white mb-3">{{item.image_header}}</h1>
+                <p class="text-white"> {{item.image_dec}}
+                </p>
+                <button type="button" [routerLink]="['/all']" routerLinkActive="router-link-active"
+                    class="btn btn-success px-5 py-2  btn-carousel">تبرع الآن</button>
+
+            </div>
+        </div>
+
+
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+<section class="unique-donation">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12 text-center">
+                <div class="line-with-words mt-5 mb-3 h1 text-header1">
+                    (وَأَحْسِنُوا إِنَّ اللَّهَ يُحِبُّ الْمُحْسِنِينَ)
+
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 text-center">
+                <div class="line-with-words  h2 text-header1  divider line one-line">
+                    برامج رحماء
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+
+
+
+
+</section>
+<section class=" bg-light">
+    <div class="container">
+
+        <div class="row text-center py-4">
+
+
+            <div *ngFor="let item of progs" class="col-xl-4 col-md-6 col-12 mb-3 mb-xl-0 pb-sm-0 pb-3 px-3">
+                <div class="card card-shadow pt-2 pb-3 pr-3 pl-3 radius-effect shadow-effect  px-2">
+                    <div class="custom-card-header d-flex justify-content-between">
+                        <div style=" width: -webkit-fill-available;">
+                            <h4 class="card-title"> {{item.name}} </h4>
+                        </div>
+
+                        <button (click)="display_share(item.prog_ref,'progs')"
+                            class="btn primary-color rounded-circle bg-light">
+                            <i class="fas fa-share-alt"></i></button>
+                    </div>
+                    <div class="my-2 project-item-details">
+                        <div class="replaced-link">
+                            <div class="project-img">
+                                <img class="h-100 w-100 radius-effect" [src]="item?.main_image?.link"
+                                    onerror="this.src='/assets/images/Default_card.svg';this.onerror='';" width="316"
+                                    height="155">
+                                <div class="rangeslider1 w-100" id="js-rangeslider-0">
+                                    <div class="rangeslider-fill-lower">
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- <div class="row mt-2">
+                            <div style="text-align: right; padding-right: 6%;" class="col  ">
+                                <small class="primary-color">ثم جمع</small>
+                                <label class="text-custom_amount d-block h4 ">{{item.collected_amount}}<small
+                                        style="margin-left: 0.3rem;" class=" text-nowrap">$</small></label>
+                            </div>
+                            <div style="text-align: left;  padding-left: 6%;" class="col">
+                                <small class="primary-color">المبلغ المتبقي</small>
+                                <label
+                                    class="text-custom_amount d-block h4 font-semibold MaxValSpan">{{item.remaining_amount}}<small
+                                        style="margin-left: 0.3rem;" class=" text-nowrap">$</small></label>
+                            </div>
+                        </div> -->
+                        <div class="row my-3 px-1 py-1">
+                            <div style="background: #f6f7f9;" class="col-12 text-center ">
+                                <small style="font-weight: 600;" class=" text-secondary">المبلغ المطلوب</small>
+
+                                <span style="font-weight: 600;" class=" h4 ml-3 primary-color"> {{item.req_amount}}
+                                    دولار
+
+                                </span>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <form name="addToCart" novalidate="novalidate">
+
+                        <div class="d-flex cart-ctr">
+                            <div #amountwidth style="padding-right: 3%;">
+                                <p-inputNumber #amount id="input_Amount2" placeholder="ادخل المبلغ" mode="decimal"
+                                    [maxlength]="10" mode="currency" currency="USD"></p-inputNumber>
+
+                            </div>
+
+                            <button (click)="navigateToProg(item.prog_ref,amount.value)" style="border-radius: 25px;"
+                                class="btn btn-primary-cutsom font-mb flex-grow-1 mx-2 " type="button">
+                                تبرع الآن
+                            </button>
+
+                        </div>
+
+                    </form>
+                    <hr>
+                    <div class="text-center">
+                        <button clic [routerLink]="['progs/'+item.prog_ref]" routerLinkActive="router-link-active"
+                            type="button" class="btn btn-block btn-sm p-0 text-muted btn-cutome2" aria-hidden="true">
+                            <span style="font-weight: 600;" class="h5">معرفة التفاصيل </span></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xl-12 col-md-12 col-12 mb-3 mb-xl-0 pb-sm-0 pb-3 px-3 mt-4 ">
+                <button [routerLink]="['/all']" routerLinkActive="router-link-active" style="border-radius: 25px;"
+                    type="button" class="btn  btn-lg btn-primary-cutsom"> عرض المزيد من
+                    برامج رحماء</button>
+
+            </div>
+
+        </div>
+    </div>
+</section>
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-12 text-center">
+                <div class="line-with-words mt-5 mb-3 h1 text-header1">
+                    (من يسَّرَ على مُعسرٍ في الدُّنيا يسَّرَ اللَّهُ عليهِ في الدُّنيا والآخرةِ )
+
+                </div>
+            </div>
+            <div class="col-12 col-lg-12 text-center">
+                <div class="line-with-words  h2 text-header1  divider line one-line">
+                    حالات متعسرة
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+
+<section class=" bg-light">
+    <div class="container">
+        <div style="position: relative;" class="row px-xl-5 py-xl-4  text-center">
+            <div class="col-1 mobile-navh" style="padding-top: 30%;">
+
+                <i style="cursor: pointer;" [style.display]="carsoul != carsoullength ? null:'none'"
+                    (click)="carsol_cotorl_next()" class="fas fa-chevron-right conprev-icon"></i>
+
+            </div>
+            <div class=" col-xl-10 col-md-12 col-12  ">
+
+                <div class="row">
+                    <div *ngFor="let item of main_humanity; let i = index" class="  col-12">
+
+                        <div [style.display]="carsoul==i? null:'none' "
+                            class="card card-shadow pt-2 pb-3 radius-effect shadow-effect  px-3">
+                            <div class="custom-card-header d-flex justify-content-between">
+                                <div style=" width: -webkit-fill-available;">
+                                    <h4 class="card-title "> {{ item.name}} </h4>
+                                </div>
+
+                                <button (click)="display_share(item.prog_ref,'humanity')"
+                                    class="btn primary-color rounded-circle bg-light">
+                                    <i class="fas fa-share-alt"></i></button>
+                            </div>
+                            <div class="my-2 project-item-details">
+                                <div class="replaced-link">
+                                    <div class="project-img">
+
+                                        <div class="rangeslider1 w-100" id="js-rangeslider-0">
+                                            <div class="rangeslider-fill-lower">
+
+                                            </div>
+                                        </div>
+                                        <div class="ytPlayer ">
+                                            <yt-player #ytPlayer *ngIf="item.viedo !=null" [videoId]="item.viedo">
+                                            </yt-player>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <!-- <div class="row mt-2">
+                                    <div style="text-align: right; padding-right: 3%;" class="col col-xl-2 ">
+                                        <small class="primary-color">تم جمع</small>
+                                        <label class="text-custom_amount d-block h4 ">{{item.collected_amount}}<small
+                                                style="margin-left: 0.3rem;" class=" text-nowrap">$</small></label>
+                                    </div>
+                                    <div style="text-align: left;  padding-left: 6%;" class="col col-xl-2">
+                                        <small class="primary-color">المبلغ المتبقي</small>
+                                        <label
+                                            class="text-custom_amount d-block h4 font-semibold MaxValSpan">{{item.remaining_amount}}<small
+                                                style="margin-left: 0.3rem;" class=" text-nowrap">$</small></label>
+                                    </div>
+                                </div> -->
+                                <div class="row my-3 px-1 py-1">
+                                    <div style="background: #f6f7f9;" class="col-12 text-center">
+                                        <small style="font-weight: 600;" class=" text-secondary">المبلغ المطلوب</small>
+
+                                        <span style="font-weight: 600;" class=" h4 ml-3 primary-color">
+                                            {{item.req_amount}}
+                                            دولار
+
+                                        </span>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <form name="addToCart" novalidate="novalidate">
+
+
+                                <div class="d-flex cart-ctr">
+                                    <div #amountwidth>
+                                        <p-inputNumber id="input_Amount" #amount placeholder="ادخل المبلغ"
+                                            mode="decimal" [maxlength]="10" mode="currency" currency="USD">
+                                        </p-inputNumber>
+
+                                    </div>
+
+                                    <button (click)="navigateTohum(item.prog_ref,amount.value)"
+                                        style="border-radius: 25px;" class="btn btn-primary-cutsom flex-grow-1 mx-2 "
+                                        type="button">
+                                        تبرع الآن
+                                    </button>
+
+                                </div>
+                            </form>
+                            <hr>
+
+                            <div class="text-center">
+                                <button clic [routerLink]="['humanity/'+item.prog_ref]"
+                                    routerLinkActive="router-link-active" type="button"
+                                    class="btn btn-block btn-sm p-0 text-muted btn-cutome2" aria-hidden="true">
+                                    <span style="font-weight: 600;" class="h5">معرفة التفاصيل </span></button>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                
+                </div>
+       
+            </div>
+            <div class="col-1 mobile-navh" style="padding-top: 30%;z-index: 1000;">
+
+                <i style="cursor: pointer;" [style.display]="carsoul != 0 ? null:'none'" (click)="carsol_cotorl_prv()"
+                    class="fas fa-chevron-left conprev-icon "></i>
+
+            </div>
+
+            <div class="col-12 py-3 mobile-nav">
+                <div class="row">
+                    <div [style.display]="carsoul != carsoullength ? null:'none'" class="col-6">
+                        <i style="cursor: pointer;" (click)="carsol_cotorl_next()"
+                            class="fas fa-chevron-right conprev-icon pr-3"></i>
+                        <div style="color: #9d9d9d;">التالي</div>
+                    </div>
+
+                    <div [style.display]="carsoul != 0 ? null:'none'" class="col-6">
+                        <i style="cursor: pointer;" (click)="carsol_cotorl_prv()"
+                            class="fas fa-chevron-left conprev-icon "></i>
+                        <div style="color: #9d9d9d;">السابق</div>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="col-xl-12 col-md-12 col-12 mb-3 mb-xl-0 pb-sm-0 pb-3 px-3 mt-4 ">
+                <button (click)='movetoH()' routerLinkActive="router-link-active" style="border-radius: 25px;"
+                    type="button" class="btn  btn-lg btn-primary-cutsom"> 
+                عرض المزيد من الحالات المتعسرة 
+                     </button>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="my-4">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-12 col-lg-12 text-center">
+                <div class="line-with-words  h2 text-header1  divider line one-line">
+                    أحدث الأنشطة </div>
+            </div>
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-12 col-md-12 pr-0 pr-md-3">
+                        <div
+                            class="d-flex flex-column justify-content-between  p-xl-3 pb-4  pb-xl-3 banner-major-doners">
+                            <div style="    background-image: url({{main_news[0]?.main_image?.link}});
+                                background-position:right ;
+    background-repeat: no-repeat ;
+    background-size: cover !important;
+                            height: 160px;border-radius: 25px;">
+                                <div class="text-white font-semibold p-3">
+                                    <span class="main-news" *ngIf="main_news[0]?.name">{{main_news[0]?.name}}
+                                    </span>
+
+                                    <div style="direction: ltr;    margin-top: 35px">
+                                        <i class="fas fa-chevron-left ml-3"></i>
+                                        <a class="small text-white" [routerLink]="['activities']">
+                                            معرفة المزيد </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-12 pr-0 pr-md-3">
+                        <div
+                            class="d-flex flex-column justify-content-between  p-xl-3  mb-4 mb-xl-3 banner-major-doners">
+                            <div style="    background-image: url({{main_news[1]?.main_image?.link}});
+                                background-position:right ;
+                      background-repeat: no-repeat ;
+                     background-size: cover !important;
+                            height: 160px;border-radius: 25px;">
+                                <div class="text-white font-semibold p-3">
+                                    <span class="main-news" *ngIf="main_news[1]?.name">{{main_news[1]?.name}}
+                                    </span>
+
+                                    <div style="direction: ltr;    margin-top: 35px">
+                                        <i class="fas fa-chevron-left ml-3"></i>
+                                        <a class="small text-white" [routerLink]="['activities']">
+                                            معرفة المزيد </a>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 col-12 pl-md-0 pt-xl-3">
+                <div style="       background-image: url({{main_news[2]?.main_image?.link}});
+                background-position: bottom;
+                background-repeat: no-repeat;
+                background-size: cover;
+                
+               border-radius: 25px;"
+                    class="d-flex flex-column justify-content-between screennewsxl  banner-major-doners">
+                    <div class="text-white p-4">
+                        <span class="main-news " *ngIf="main_news[2]?.name">
+                            {{main_news[2]?.name}}
+
+                        </span>
+                        <div style="direction: ltr;    padding-bottom: 20px;
+                        padding-left: 13px;">
+                            <i class="fas fa-chevron-left text-white"></i>
+                            <a class="small text-white" [routerLink]="['activities']"> معرفة
+                                المزيد </a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+     
+
+        </div>
+        
+    </div>
+</section>
+
+<p-dialog [modal]='true' [(visible)]="displayshare">
+    <div class="row pt-3  pt-xl-0">
+        <div class="col-12 text-center">
+            <h3 style="font-weight: 600;" class="primary-color"> رابط المشاركة
+
+            </h3>
+        </div>
+        <div class="col-12  mt-3">
+            <div class="p-inputgroup">
+                <button style="border-bottom-right-radius: 25px;
+        border-top-right-radius: 25px;
+        " type="button" (click)='copyMessage()' class="btn btn-primary-cutsom font-mb  "> نسخ </button>
+
+                <input type="text" [(ngModel)]="sharelink" pInputText />
+
+            </div>
+        </div>
+
+    </div>
+
+</p-dialog>
+
+
+<footer style="    background: linear-gradient(
+    90deg, #2d7798 0%, #28a58a 59%, #28a58a 100%); ">
+    <section class="pt-3 text-light">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between screenxl" role="contentinfo">
+                <span style="font-weight: 600;" class="h5 ">جميع الحقوق محفوظة لمنصة رحماء 2022</span>
+
+
+
+
+                <div class="align-items-center d-flex d-md-flex flex-column flex-md-row-reverse pt-1 ">
+                    <a style="margin-right: 1rem;" class=" h5    text-light" aria-current="page"
+                        href="https://www.facebook.com/%D8%B1%D8%AD%D9%85%D8%A7%D8%A1-ruhama--1611552422412668/"> <i
+                            class="fab fa-facebook "></i></a>
+                    <a style="margin-right: 1rem;" class=" h5    text-light" aria-current="page" href="#"> <i
+                            class="fab fa-instagram "></i></a>
+                    <a style="margin-right: 1rem;" class=" h5   text-light" aria-current="page"
+                        href="https://api.whatsapp.com/send?phone=972567392862"> <i class="fab fa-whatsapp  "></i></a>
+                    <a style="margin-right: 1rem;" href="https://twitter.com/ruhmaalkher?ref_src=twsrc%5Etfw"
+                        aria-current="page" class="twitter-follow-button h5  text-light" data-show-count="false"><i
+                            class="fab fa-twitter  "></i></a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <!-- <label style="font-weight: 800;" class=" h5  primary ">: مواقعنا  </label> -->
+
+                </div>
+            </div>
+
+            <div style="text-align: center !important;" class="row  screen-mob">
+                <div class="col-12  mb-2">
+                    <span style="font-weight: 600;" class="h6">جميع الحقوق محفوظة لمنصة رحماء 2022</span>
+
+                </div>
+                <div class="col-12  ">
+                    <a style="margin-right: 1rem;" class=" h6    text-light" aria-current="page"
+                        href="https://www.facebook.com/%D8%B1%D8%AD%D9%85%D8%A7%D8%A1-ruhama--1611552422412668/"> <i
+                            class="fab fa-facebook "></i></a>
+                    <a style="margin-right: 1rem;" class=" h6    text-light" aria-current="page" href="#"> <i
+                            class="fab fa-instagram "></i></a>
+                    <a style="margin-right: 1rem;" class=" h6   text-light" aria-current="page"
+                        href="https://api.whatsapp.com/send?phone=972567392862"> <i class="fab fa-whatsapp  "></i></a>
+                    <a style="margin-right: 1rem;" href="https://twitter.com/ruhmaalkher?ref_src=twsrc%5Etfw"
+                        aria-current="page" class="twitter-follow-button h6  text-light" data-show-count="false"><i
+                            class="fab fa-twitter  "></i></a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</footer>

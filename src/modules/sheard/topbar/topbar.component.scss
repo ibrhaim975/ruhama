@@ -1,0 +1,114 @@
+nav{
+    box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;    
+    transition: 0.4s;
+    z-index: 10000;
+}
+        
+        .nav-link {
+            font-weight: 800;
+width: max-content;
+}
+.nav-header2{
+    display: block;width: 100vw; position: absolute;
+    top: -13%;
+left: 0%; background-color: #ededed;
+direction: ltr;
+    padding-left: 14%;
+}
+.navbar-brand{
+    padding-right: 15%;
+}
+.nav-item{
+    margin-left: 20% !important;
+}
+.nav-padding{
+    padding-right: 21%;
+}
+.nav-link:hover{
+    color: #2f7898 !important;
+    border-bottom:1px solid  #2f7898 !important;
+
+}
+.btn-nav{
+    background: linear-gradient(90deg, rgba(45,119,152,1) 0%, rgba(40,165,138,1) 59%, rgba(40,165,138,1) 100%);
+    font-size: large;
+    font-weight: 600;
+    word-spacing: 2px;
+    border-radius: 25px;
+}
+.nav-logo{
+    position: absolute;
+    right: 14%;
+    top: 0;
+    box-shadow: 0 3px 5px rgb(177 177 177 / 16%);
+    padding: 15px 20px 30px;
+    border-radius: 0 0 30px 30px;
+    z-index: 999;
+    width: 130px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: 0.3s;
+    // box-shadow: rgba(17, 17, 26, 0.05) 0px 4px 16px, rgba(17, 17, 26, 0.05) 0px 8px 32px;
+    box-shadow: rgba(0, 0, 0, 0.18) 0px 2px 4px;
+}
+.nav-logosMALL{
+    display: none ;
+  }
+  .primary{
+color: #2c7d96 !important;;
+  }
+  .btn-mob{
+      display:none;
+  }
+@media (max-width: 991.98px) {
+    .nav-logosMALL{
+        display: block ;
+      }
+    .nav-logo{
+        display: none;
+    }
+.nav-header2{
+    display: none;
+}
+.nav-padding{
+    padding-right: 0%;
+}
+.navbar-brand{
+    padding-right: 42%;
+ 
+}
+.fixed-top{
+    right: -5px;
+}
+.nav-link{
+    border-bottom-width: 2px;
+    border-bottom:1px solid #2f7898 !important;
+    display: block;
+    width: 100vw;
+    text-align: center;
+ 
+}
+
+.btn-mobile{
+    display: none !important;
+    text-align: center !important;
+    padding-left: 0px !important;
+}
+.navbar{
+    padding: 0px !important;
+    position: fixed !important;
+
+}
+.btn-mob{
+    display: block;
+position: fixed;
+right: 0.3rem;
+top: 1.1rem;
+font-size: 0.9rem;
+}
+.navbar-toggler{
+    border:none !important
+}
+}

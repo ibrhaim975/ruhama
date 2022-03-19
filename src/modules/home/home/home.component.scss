@@ -1,0 +1,124 @@
+.carousel-fade .carousel-inner .item {
+    opacity: 0;
+    -webkit-transition-property: opacity;
+    -moz-transition-property: opacity;
+    -o-transition-property: opacity;
+    transition-property: opacity;
+  }
+  .carousel-fade .carousel-inner .active {
+    opacity: 1;
+  }
+  .carousel-fade .carousel-inner .active.left,
+  .carousel-fade .carousel-inner .active.right {
+    left: 0;
+    opacity: 0;
+    z-index: 1;
+  }
+  .carousel-fade .carousel-inner .next.left,
+  .carousel-fade .carousel-inner .prev.right {
+    opacity: 1;
+  }
+  .carousel-fade .carousel-control {
+    z-index: 2;
+  }
+  .btn-carousel{
+    background: white;
+    color: #2f7898;
+    font-size: large;
+    font-size: x-large;
+    font-weight: 600;
+    word-spacing: 2px;
+    border-radius: 25px;
+    border-color: #2f7898;
+  }
+.btn-carousel:hover{
+  border-color: #2f7898;
+  box-shadow: none !important;
+}
+.btn-carousel:focus{
+  border-color: #2f7898;
+  box-shadow: none !important;
+
+}
+.carousel-item img{
+  transform: scale(1.1);
+    height: 90vh;
+     width: 100vw;
+}
+.carousel-text{
+h1{
+  font-size: 3.5rem;
+  font-weight: 600;
+}
+p{
+  font-size: 2rem;
+  font-weight: 600;
+}
+}
+.carousel-content{
+position: absolute;top: 45%;right: 18%;
+}
+
+
+//
+
+
+
+
+
+
+  @media (max-width: 991.98px) {
+.carousel{
+  padding-top: 18%;
+}
+    .text-header1{
+      font-size: 1.2rem;
+    }
+    .carousel-item img{
+        height: 90vh!important;
+         width:100vw!important;
+    }
+    .carousel-content{
+      top: 20%;
+      right: 27%;
+    }
+    .carousel-content2{
+      top: 20%;
+      right: 17%;
+    }
+
+    .carousel-text{ 
+      display: block;
+      text-align: center !important;
+      h1{
+        font-size: 2rem;
+        font-weight: 600;
+      }
+      p{
+        font-size: 1rem;
+        font-weight: 600;
+      }
+      button{
+        transform: scale(0.8)
+      }
+
+
+    }
+  
+    .font-mb{
+      font-size: 1rem !important;
+    }
+}
+
+.text_p {
+  display: block;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  
+}
+.main-news{
+  background-color: #2f7898;
+  padding: 3px;
+}

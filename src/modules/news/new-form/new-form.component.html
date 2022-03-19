@@ -1,0 +1,99 @@
+<p-toast></p-toast>
+
+<div style="padding-top:10%;" class="container pt-cutome2">
+    <div class="row">
+     
+       <div class="col-md-6 col-12 mb-3">
+            <div class="card card-shadow border-rounded">
+                <div class="row pt-3 px-3">
+                    <div style="position: relative;" class="col-12 col-xl-8 pt-4 pt-xl-2">
+                      
+                        <button style="border-radius: 25px;" class="btn btn-primary-cutsom2 btn-sharesm">
+                            <i class="fas fa-share-alt share-icon"></i>
+                            <span style="margin-left: 0.5rem;">مشاركة</span>
+
+                        </button>
+                    </div>
+                    <div style="direction: ltr;" class="col-4 sm-share">
+
+                        <button style="border-radius: 25px;" class="btn btn-primary-cutsom2 ">
+                            <i class="fas fa-share-alt share-icon"></i>
+                            <span style="margin-left: 0.5rem;">مشاركة</span>
+
+                        </button>
+
+                    </div>
+
+                    <div class="position-relative overflow-hidden center-items-vertically details-image p-3 mb-0">
+                        <img style="    border-top-right-radius: 20px !important;
+                    border-top-left-radius: 20px !important; margin-bottom: 0px;" class="h-100 w-100 "
+                            [src]="prog?.main_image?.link">
+                    </div>
+                    <p *ngIf="prog?.description" class="p-3 m-0 text-custom_amount">{{prog?.name}}</p>
+             
+
+                    <div *ngIf="prog.viedo !=null" class="position-relative overflow-hidden center-items-vertically details-image p-3 mb-3 ">
+                        <div class="ytPlayer2 ">
+                            <yt-player #ytPlayer  [videoId]="prog.viedo"></yt-player>
+                        </div>
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+      
+    </div>
+</div>
+
+    <footer class="form-new"  >
+        <section style=" background: linear-gradient(
+            90deg, #2d7798 0%, #28a58a 59%, #28a58a 100%); " class="pt-3 text-light">
+            <div class="container">
+                <div class="d-flex align-items-center justify-content-between screenxl" role="contentinfo">
+                    <span style="font-weight: 600;" class="h5 ">جميع الحقوق محفوظة لمنصة رحماء 2022</span>
+        
+                
+        
+        
+                    <div class="align-items-center d-flex d-md-flex flex-column flex-md-row-reverse pt-1 ">
+                        <a style="margin-right: 1rem;" class=" h5    text-light" aria-current="page"
+                            href="https://www.facebook.com/%D8%B1%D8%AD%D9%85%D8%A7%D8%A1-ruhama--1611552422412668/"> <i
+                                class="fab fa-facebook "></i></a>
+                        <a style="margin-right: 1rem;" class=" h5    text-light" aria-current="page" href="#"> <i
+                                class="fab fa-instagram "></i></a>
+                        <a style="margin-right: 1rem;" class=" h5   text-light" aria-current="page"
+                            href="https://api.whatsapp.com/send?phone=972567392862"> <i class="fab fa-whatsapp  "></i></a>
+                        <a style="margin-right: 1rem;" href="https://twitter.com/ruhmaalkher?ref_src=twsrc%5Etfw"
+                            aria-current="page" class="twitter-follow-button h5  text-light" data-show-count="false"><i
+                                class="fab fa-twitter  "></i></a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                        <!-- <label style="font-weight: 800;" class=" h5  primary ">: مواقعنا  </label> -->
+        
+                    </div>
+                </div>
+        
+                <div style="text-align: center !important;" class="row  screen-mob">
+                    <div class="col-12  mb-2">
+                        <span style="font-weight: 600;" class="h6">جميع الحقوق محفوظة لمنصة رحماء 2022</span>
+        
+                    </div>
+                    <div class="col-12  ">
+                        <a style="margin-right: 1rem;" class=" h6    text-light" aria-current="page"
+                            href="https://www.facebook.com/%D8%B1%D8%AD%D9%85%D8%A7%D8%A1-ruhama--1611552422412668/"> <i
+                                class="fab fa-facebook "></i></a>
+                        <a style="margin-right: 1rem;" class=" h6    text-light" aria-current="page" href="#"> <i
+                                class="fab fa-instagram "></i></a>
+                        <a style="margin-right: 1rem;" class=" h6   text-light" aria-current="page"
+                            href="https://api.whatsapp.com/send?phone=972567392862"> <i class="fab fa-whatsapp  "></i></a>
+                        <a style="margin-right: 1rem;" href="https://twitter.com/ruhmaalkher?ref_src=twsrc%5Etfw"
+                            aria-current="page" class="twitter-follow-button h6  text-light" data-show-count="false"><i
+                                class="fab fa-twitter  "></i></a>
+                        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        </footer>

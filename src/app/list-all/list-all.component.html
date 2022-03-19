@@ -1,0 +1,96 @@
+<nav class="padding-header ">
+    <div class="container">
+
+        <ol class="breadcrumb  ml-md-0">
+            <li class="breadcrumb-item "><a class="primary-color" href="/">الرئيسية</a></li>
+            <li class="breadcrumb-item active">فرص التبرع</li>
+            <li class="breadcrumb-item active" aria-current="page">
+                {{listProgs}}
+            </li>
+        </ol>
+    </div>
+
+</nav>
+<div class="container pt-cutome">
+    <div class="row  pt-1">
+
+        <p-tabView [(activeIndex)]="index" (onChange)="handleChange($event)">
+            <p-tabPanel  header="البرامج">
+                <div class="pt-3">
+                    <h1 style="font-weight: 600;" class="primary-color text-left font-semibold">البرامج</h1>
+                    <p style="word-spacing: 2px;" class="text-secondary">فرص تبرع متنوعة تصنع أثراً مستداماً وتحقق أثراً
+                        اجتماعياً واسعاً للحالات الأشد احتياجاً.</p>
+                </div>
+                <ng-template pTemplate="content">
+                    <app-prog-list></app-prog-list>
+                </ng-template>
+            </p-tabPanel>
+            <p-tabPanel header="الحالات المتعسرة">
+                <div class="pt-3">
+                    <h1 style="font-weight: 600;" class="primary-color text-left font-semibold">الحالات المتعسرة</h1>
+                    <p style="word-spacing: 2px;" class="text-secondary">فرص التبرع للمواطنين المعسرين ممن أثقلت كواهلهم
+                        الديون وصدر بحقهم أمر تنفيذ قضائي من المحكمة.
+                    </p>
+                </div>
+                <ng-template pTemplate="content">
+                    <app-h-list></app-h-list>
+                </ng-template>
+
+            </p-tabPanel>
+
+        </p-tabView>
+        <div>
+        </div>
+    </div>
+</div>
+
+<footer class="footer">
+    <section style="    background: linear-gradient(
+        90deg, #2d7798 0%, #28a58a 59%, #28a58a 100%); " class="pt-3 text-light">
+        <div class="container">
+            <div class="d-flex align-items-center justify-content-between screenxl" role="contentinfo">
+                <span style="font-weight: 600;" class="h5 ">جميع الحقوق محفوظة لمنصة رحماء 2022</span>
+
+
+
+
+                <div class="align-items-center d-flex d-md-flex flex-column flex-md-row-reverse pt-1 ">
+                    <a style="margin-right: 1rem;" class=" h5    text-light" aria-current="page"
+                        href="https://www.facebook.com/%D8%B1%D8%AD%D9%85%D8%A7%D8%A1-ruhama--1611552422412668/"> <i
+                            class="fab fa-facebook "></i></a>
+                    <a style="margin-right: 1rem;" class=" h5    text-light" aria-current="page" href="#"> <i
+                            class="fab fa-instagram "></i></a>
+                    <a style="margin-right: 1rem;" class=" h5   text-light" aria-current="page"
+                        href="https://api.whatsapp.com/send?phone=972567392862"> <i class="fab fa-whatsapp  "></i></a>
+                    <a style="margin-right: 1rem;" href="https://twitter.com/ruhmaalkher?ref_src=twsrc%5Etfw"
+                        aria-current="page" class="twitter-follow-button h5  text-light" data-show-count="false"><i
+                            class="fab fa-twitter  "></i></a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                    <!-- <label style="font-weight: 800;" class=" h5  primary ">: مواقعنا  </label> -->
+
+                </div>
+            </div>
+
+            <div style="text-align: center !important;" class="row  screen-mob">
+                <div class="col-12  mb-2">
+                    <span style="font-weight: 600;" class="h6">جميع الحقوق محفوظة لمنصة رحماء 2022</span>
+
+                </div>
+                <div class="col-12  ">
+                    <a style="margin-right: 1rem;" class=" h6    text-light" aria-current="page"
+                        href="https://www.facebook.com/%D8%B1%D8%AD%D9%85%D8%A7%D8%A1-ruhama--1611552422412668/"> <i
+                            class="fab fa-facebook "></i></a>
+                    <a style="margin-right: 1rem;" class=" h6    text-light" aria-current="page" href="#"> <i
+                            class="fab fa-instagram "></i></a>
+                    <a style="margin-right: 1rem;" class=" h6   text-light" aria-current="page"
+                        href="https://api.whatsapp.com/send?phone=972567392862"> <i class="fab fa-whatsapp  "></i></a>
+                    <a style="margin-right: 1rem;" href="https://twitter.com/ruhmaalkher?ref_src=twsrc%5Etfw"
+                        aria-current="page" class="twitter-follow-button h6  text-light" data-show-count="false"><i
+                            class="fab fa-twitter  "></i></a>
+                    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+                </div>
+            </div>
+        </div>
+    </section>
+
+</footer>
